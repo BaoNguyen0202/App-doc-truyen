@@ -22,11 +22,13 @@ const Singup = () => {
       setErr("vui long nhap day du thong tin");
     } else if (!name) {
       setErr("vui long nhap Name");
+    } else if (!name.trim()) {
+      setErr("vui long nhap dung dinh dang");
     } else if (!email) {
       setErr("vui long nhap Email");
     } else if (!password) {
       setErr("vui long nhap Password");
-    } else if (password.length <= 7) {
+    } else if (password.length <= 5) {
       setErr("vui long nhap du 6 ky tu");
     } else {
       createUserWithEmailAndPassword(auth, email, password)
@@ -42,7 +44,7 @@ const Singup = () => {
         })
         .catch((error) => {
           console.log(error.code);
-          if (error.code == "auth/email-already-in-use") {
+          if (error.code === "auth/email-already-in-use") {
             setErr("Email da ton tai");
           } else {
             setErr("");
@@ -51,26 +53,88 @@ const Singup = () => {
     }
   };
   return (
-    <div id="singup">
+    <div id="singup" style={{ marginTop: 50 }}>
       <div className="singup">
         <h2>Create a acout</h2>
-        <input
-          onChange={(e) => setName(e.target.value)}
-          type="text"
-          placeholder="Name"
-        />
-        <input
-          onChange={(e) => setEmail(e.target.value)}
-          type="Email"
-          placeholder="Email"
-        />
-        <input
-          onChange={(e) => setPassword(e.target.value)}
-          type="Password"
-          placeholder="Password"
-        />
+
+        <div class="form-group">
+          <label for="exampleInputName" class="sr-only">
+            Name
+          </label>
+          <div class="position-relative has-icon-right">
+            <input
+              onChange={(e) => setName(e.target.value)}
+              type="text"
+              id="exampleInputName"
+              class="form-control input-shadow"
+              placeholder="Enter Your Name"
+            />
+            <div class="form-control-position">
+              <i class="icon-user"></i>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="exampleInputEmailId" class="sr-only">
+            Email ID
+          </label>
+          <div class="position-relative has-icon-right">
+            <input
+              onChange={(e) => setEmail(e.target.value)}
+              type="Email"
+              id="exampleInputEmailId"
+              class="form-control input-shadow"
+              placeholder="Enter Your Email ID"
+            />
+            <div class="form-control-position">
+              <i class="icon-envelope-open"></i>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPassword" class="sr-only">
+            Password
+          </label>
+          <div class="position-relative has-icon-right">
+            <input
+              onChange={(e) => setPassword(e.target.value)}
+              type="Password"
+              id="exampleInputPassword"
+              class="form-control input-shadow"
+              placeholder="Choose Password"
+            />
+            <div class="form-control-position">
+              <i class="icon-lock"></i>
+            </div>
+          </div>
+        </div>
         <p>{err}</p>
-        <button onClick={handleSubmit}>Singup</button>
+        <div class="form-group">
+          <div class="icheck-material-white">
+            <input type="checkbox" id="user-checkbox" checked="" />
+            <label for="user-checkbox">I Agree With Terms & Conditions</label>
+          </div>
+        </div>
+        <button
+          type="button"
+          class="btn btn-light btn-block waves-effect waves-light"
+          onClick={handleSubmit}
+        >
+          Signup
+        </button>
+        <div class="form-row mt-4">
+          <div class="form-group mb-0 col-6">
+            <button type="button" class="btn btn-light btn-block">
+              <i class="fa fa-facebook-square"></i> Facebook
+            </button>
+          </div>
+          <div class="form-group mb-0 col-6 text-right">
+            <button type="button" class="btn btn-light btn-block">
+              <i class="fa fa-twitter-square"></i> Twitter
+            </button>
+          </div>
+        </div>
         <Link to="/signin">You have already accout? Singin</Link>
       </div>
     </div>

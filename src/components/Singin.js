@@ -1,7 +1,8 @@
+/* eslint-disable no-script-url */
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import firebaseConfig from "../fire";
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { getAuth, signInWithEmailAndPassword, signOut } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 
 const Singin = () => {
@@ -29,9 +30,9 @@ const Singin = () => {
         })
         .catch((error) => {
           console.log(error.code);
-          if (error.code == "auth/wrong-password") {
+          if (error.code === "auth/wrong-password") {
             setErr("Nhap sai passWord");
-          } else if (error.code == "auth/user-not-found") {
+          } else if (error.code === "auth/user-not-found") {
             setErr("Nhap sai Email");
           } else {
             setErr("");
@@ -40,22 +41,65 @@ const Singin = () => {
     }
   };
   return (
-    <div id="singup">
+    <div id="singup" style={{ marginTop: 50 }}>
       <div className="singup">
         <h2>Login your account</h2>
-        <input
-          onChange={(e) => setEmail(e.target.value)}
-          type="Email"
-          placeholder="Email"
-        />
-        <input
-          onChange={(e) => setPassword(e.target.value)}
-          type="Password"
-          placeholder="Password"
-        />
-        <p>{err}</p>
-        <button onClick={handleSubmit}>Singin</button>
-        <Link to="/signup">You don't accout? Singup</Link>
+        <div class="position-relative has-icon-right">
+          <input
+            onChange={(e) => setEmail(e.target.value)}
+            type="Email"
+            id="exampleInputUsername"
+            class="form-control input-shadow"
+            placeholder="Enter Username"
+          />
+          <div class="form-control-position">
+            <i class="icon-user"></i>
+          </div>
+        </div>
+        <div class="position-relative has-icon-right">
+          <input
+            onChange={(e) => setPassword(e.target.value)}
+            type="Password"
+            id="exampleInputPassword"
+            class="form-control input-shadow"
+            placeholder="Enter Password"
+          />
+          <div class="form-control-position">
+            <i class="icon-lock"></i>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-6">
+            <div class="icheck-material-white" style={{ float: "left" }}>
+              <input type="checkbox" id="user-checkbox" checked="" />
+              <label for="user-checkbox">Remember me</label>
+            </div>
+          </div>
+          <div class="form-group col-6 text-right">
+            <a href="reset-password.html">Reset Password</a>
+          </div>
+        </div>
+        <>{err}</>
+        <button
+          onClick={handleSubmit}
+          type="button"
+          class="btn btn-light btn-block"
+        >
+          Sign In
+        </button>
+        <div class="text-center mt-3">Sign In With</div>
+        <div class="form-row mt-4">
+          <div class="form-group mb-0 col-6">
+            <button type="button" class="btn btn-light btn-block">
+              <i class="fa fa-facebook-square"></i> Facebook
+            </button>
+          </div>
+          <div class="form-group mb-0 col-6 text-right">
+            <button type="button" class="btn btn-light btn-block">
+              <i class="fa fa-twitter-square"></i> Twitter
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   );
