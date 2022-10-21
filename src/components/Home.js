@@ -44,28 +44,28 @@ const Home = () => {
             </a>
           </li>
 
-          <li>
+          <li onClick={() => navigate("/homejob")}>
             <a>
               <i className="zmdi zmdi-invert-colors"></i>{" "}
               <span>Trang chủ hiển thị tin tuyển dụng</span>
             </a>
           </li>
 
-          <li>
+          <li onClick={() => navigate("/managejob")}>
             <a>
               <i className="zmdi zmdi-format-list-bulleted"></i>{" "}
               <span>Quản lý tin tuyển dụng được đăng lên</span>
             </a>
           </li>
 
-          <li>
+          <li onClick={() => navigate("/manageacout")}>
             <a>
               <i className="zmdi zmdi-grid"></i>{" "}
               <span>Quản lý tài khoản người dùng</span>
             </a>
           </li>
 
-          <li>
+          <li onClick={() => navigate("/jobApplication")}>
             <a>
               <i className="zmdi zmdi-calendar-check"></i>{" "}
               <span>Quản lý hồ sơ CV apply của người tìm việc</span>
@@ -82,13 +82,6 @@ const Home = () => {
             <a target="_blank">
               <i className="zmdi zmdi-lock"></i> <span>Đổi mật khẩu</span>
             </a>
-          </li>
-
-          <li>
-            <button target="_blank">
-              <i className="zmdi zmdi-account-circle"></i>{" "}
-              <span>Tạo Tài Khoản</span>
-            </button>
           </li>
 
           <li className="sidebar-header">khác</li>
