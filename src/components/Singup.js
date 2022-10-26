@@ -66,12 +66,8 @@ const Singup = () => {
               onChange={(e) => setName(e.target.value)}
               type="text"
               id="exampleInputName"
-              class="form-control input-shadow"
               placeholder="Enter Your Name"
             />
-            <div class="form-control-position">
-              <i class="icon-user"></i>
-            </div>
           </div>
         </div>
 
@@ -84,12 +80,8 @@ const Singup = () => {
               onChange={(e) => setEmail(e.target.value)}
               type="Email"
               id="exampleInputEmailId"
-              class="form-control input-shadow"
               placeholder="Enter Your Email ID"
             />
-            <div class="form-control-position">
-              <i class="icon-envelope-open"></i>
-            </div>
           </div>
         </div>
         <div class="form-group">
@@ -101,12 +93,8 @@ const Singup = () => {
               onChange={(e) => setPassword(e.target.value)}
               type="Password"
               id="exampleInputPassword"
-              class="form-control input-shadow"
               placeholder="Choose Password"
             />
-            <div class="form-control-position">
-              <i class="icon-lock"></i>
-            </div>
           </div>
         </div>
         <p>{err}</p>

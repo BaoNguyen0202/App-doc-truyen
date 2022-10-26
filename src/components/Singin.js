@@ -1,7 +1,6 @@
 /* eslint-disable no-script-url */
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import firebaseConfig from "../fire";
+
 import { getAuth, signInWithEmailAndPassword, signOut } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 
@@ -49,24 +48,16 @@ const Singin = () => {
             onChange={(e) => setEmail(e.target.value)}
             type="Email"
             id="exampleInputUsername"
-            class="form-control input-shadow"
             placeholder="Enter Username"
           />
-          <div class="form-control-position">
-            <i class="icon-user"></i>
-          </div>
         </div>
         <div class="position-relative has-icon-right">
           <input
             onChange={(e) => setPassword(e.target.value)}
             type="Password"
             id="exampleInputPassword"
-            class="form-control input-shadow"
             placeholder="Enter Password"
           />
-          <div class="form-control-position">
-            <i class="icon-lock"></i>
-          </div>
         </div>
         <div class="form-row">
           <div class="form-group col-6">
